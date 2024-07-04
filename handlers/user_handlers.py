@@ -1,12 +1,13 @@
-from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ReplyKeyboardRemove, PollAnswer, InputPollOption
+from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ReplyKeyboardRemove
 from aiogram.filters import Command, CommandStart
 from aiogram import Router, F, Bot
 
-import database_funcs.sqlite_funcs
+
 from keyboards import inline_keyboards, reply_keyboards
 from database_funcs import sqlite_funcs
 
 admin_id = 1004684045
+admin_id1 = 332518143
 
 router = Router()
 
@@ -93,6 +94,10 @@ async def lets_start_a_test(callback: CallbackQuery, bot: Bot):
         if sqlite_funcs.check_user(callback.from_user.id):
             sqlite_funcs.adding_users(tg_id=callback.from_user.id, name=callback.from_user.first_name)
         await bot.send_message(chat_id=admin_id,
+                               text=f'Юзер начал проходить тест по кондею:'
+                                    f'{callback.from_user.first_name} - Имя\n'
+                                    f'Его ID - {callback.from_user.id}')
+        await bot.send_message(chat_id=admin_id1,
                                text=f'Юзер начал проходить тест по кондею:'
                                     f'{callback.from_user.first_name} - Имя\n'
                                     f'Его ID - {callback.from_user.id}')
@@ -494,7 +499,10 @@ async def ac_20_note(callback: CallbackQuery, bot: Bot):
         sqlite_funcs.change_opportunity_for_ac_test(callback.from_user.id)
         await bot.send_message(text=f'{callback.from_user.first_name} - прошел тест, его результат:\n{users[callback.from_user.id]} баллов',
                                chat_id=admin_id)
-        await sqlite_funcs.get_finished_with_ac(callback.from_user.id)
+        await bot.send_message(
+            text=f'{callback.from_user.first_name} - прошел тест, его результат:\n{users[callback.from_user.id]} баллов',
+            chat_id=admin_id1)
+        sqlite_funcs.get_finished_with_ac(callback.from_user.id)
         users[callback.from_user.id] = 0
 
 
