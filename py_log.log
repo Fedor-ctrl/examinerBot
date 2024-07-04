@@ -1,73 +1,17 @@
 INFO:aiogram.dispatcher:Start polling
 INFO:aiogram.dispatcher:Run polling for bot @good_avto_exam_bot id=7412534301 - 'GoodAvto Exams'
-INFO:aiogram.event:Update id=163306997 is handled. Duration 156 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163306998 is handled. Duration 139 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163306999 is handled. Duration 171 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307000 is handled. Duration 765 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307001 is handled. Duration 203 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307002 is handled. Duration 342 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307003 is handled. Duration 234 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307004 is handled. Duration 218 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307005 is handled. Duration 312 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307006 is handled. Duration 203 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307007 is handled. Duration 187 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307008 is handled. Duration 172 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307009 is handled. Duration 77 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307010 is handled. Duration 77 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307011 is handled. Duration 78 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307012 is handled. Duration 171 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307013 is handled. Duration 171 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307014 is handled. Duration 156 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307015 is handled. Duration 156 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307016 is handled. Duration 125 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307017 is handled. Duration 343 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307018 is handled. Duration 312 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307019 is handled. Duration 296 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307020 is handled. Duration 264 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307021 is handled. Duration 171 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307022 is handled. Duration 203 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307023 is handled. Duration 218 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307024 is handled. Duration 187 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307025 is handled. Duration 327 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307026 is handled. Duration 250 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307027 is handled. Duration 250 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307028 is handled. Duration 156 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307029 is handled. Duration 217 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307030 is handled. Duration 141 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307031 is handled. Duration 250 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307032 is handled. Duration 328 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307033 is handled. Duration 359 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307034 is handled. Duration 172 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307035 is handled. Duration 171 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307036 is handled. Duration 187 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307037 is handled. Duration 78 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307038 is handled. Duration 312 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307039 is handled. Duration 141 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307040 is handled. Duration 218 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307041 is handled. Duration 78 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307042 is handled. Duration 328 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307043 is handled. Duration 234 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307044 is handled. Duration 391 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307045 is handled. Duration 546 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307046 is handled. Duration 202 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307047 is handled. Duration 78 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307048 is handled. Duration 187 ms by bot id=7412534301
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
-Original description: Too Many Requests: retry after 5
-(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 121] Превышен таймаут семафора
 WARNING:aiogram.dispatcher:Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7412534301)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
-Original description: Too Many Requests: retry after 5
-(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
-WARNING:aiogram.dispatcher:Sleep for 1.204248 seconds and try again... (tryings = 1, bot id = 7412534301)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
-Original description: Too Many Requests: retry after 5
-(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
-WARNING:aiogram.dispatcher:Sleep for 1.537222 seconds and try again... (tryings = 2, bot id = 7412534301)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
-Original description: Too Many Requests: retry after 5
-(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
-WARNING:aiogram.dispatcher:Sleep for 1.691199 seconds and try again... (tryings = 3, bot id = 7412534301)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+WARNING:aiogram.dispatcher:Sleep for 1.213872 seconds and try again... (tryings = 1, bot id = 7412534301)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+WARNING:aiogram.dispatcher:Sleep for 1.694472 seconds and try again... (tryings = 2, bot id = 7412534301)
+INFO:aiogram.dispatcher:Connection established (tryings = 3, bot id = 7412534301)
 ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
-WARNING:aiogram.dispatcher:Sleep for 2.245470 seconds and try again... (tryings = 4, bot id = 7412534301)
-INFO:aiogram.dispatcher:Connection established (tryings = 5, bot id = 7412534301)
+WARNING:aiogram.dispatcher:Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7412534301)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+WARNING:aiogram.dispatcher:Sleep for 1.289877 seconds and try again... (tryings = 1, bot id = 7412534301)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+WARNING:aiogram.dispatcher:Sleep for 1.582864 seconds and try again... (tryings = 2, bot id = 7412534301)
+INFO:aiogram.dispatcher:Connection established (tryings = 3, bot id = 7412534301)
+INFO:aiogram.event:Update id=163307337 is handled. Duration 671 ms by bot id=7412534301
