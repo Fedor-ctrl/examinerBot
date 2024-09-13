@@ -6,8 +6,10 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 def send_video_osmotr():
     kb_builder = InlineKeyboardBuilder()
     buttons = [
-        InlineKeyboardButton(text='Полный осмотр авто(YouTube)', url='https://youtu.be/JbsrSAg_slg?si=exQj5KHRyWQOy8am'),
-        InlineKeyboardButton(text='Вернуться в меню', callback_data='get_me_to_menu')
+        InlineKeyboardButton(text='Полный осмотр авто(GoogleDisk)',
+                             url='https://drive.google.com/file/d/1DNDq5sofqBOcti2Zve3OkWib1BKvE-9Z/view?usp=sharing'),
+        InlineKeyboardButton(text='Вернуться в меню',
+                             callback_data='get_me_to_menu')
     ]
     kb_builder.row(*buttons, width=1)
     return kb_builder.as_markup()

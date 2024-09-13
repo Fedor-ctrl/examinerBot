@@ -1,4 +1,7 @@
 INFO:aiogram.dispatcher:Start polling
-INFO:aiogram.dispatcher:Run polling for bot @good_avto_exam_bot id=7412534301 - 'GoodAvto Exams'
-INFO:aiogram.event:Update id=163307367 is handled. Duration 250 ms by bot id=7412534301
-INFO:aiogram.event:Update id=163307368 is handled. Duration 437 ms by bot id=7412534301
+INFO:aiogram.dispatcher:Run polling for bot @good_avto_exam_bot id=7412534301 - 'GoodAvto Академия'
+INFO:aiogram.event:Update id=163307519 is handled. Duration 171 ms by bot id=7412534301
+INFO:aiogram.event:Update id=163307520 is handled. Duration 93 ms by bot id=7412534301
+INFO:aiogram.event:Update id=163307521 is handled. Duration 61 ms by bot id=7412534301
+INFO:aiogram.dispatcher:Polling stopped for bot @good_avto_exam_bot id=7412534301 - 'GoodAvto Академия'
+INFO:aiogram.dispatcher:Polling stopped

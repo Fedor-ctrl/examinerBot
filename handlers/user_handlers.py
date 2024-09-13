@@ -48,7 +48,9 @@ async def show_hello_slesarka(message: Message):
 @router.message(F.text == '6481373')
 async def send_osmotr_video(message: Message):
     await message.answer(
-        text='Начнем с азов, ниже прикреплена ссылка на видео о том, как проводить полный осмотр автомобиля:',
+        text='Устройство автомобиля - это тот фундамент, который необходимо заложить перед изучением дальнейшего материала.\n\n'
+             'В этом видео вы поймете из чего состоит автомобиль. На простых примерах будут показаны основные его части.\n\n'
+             'Если нет доступа - обратитесь к Павлу Лизневу',
         reply_markup=inline_keyboards.send_video_osmotr())
 
 
