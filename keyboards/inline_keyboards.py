@@ -2,14 +2,50 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from aiogram import Router
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
+
+
 # Отправить видео как делать полный осмотр, либо вернуться в меню:
 def send_video_osmotr():
     kb_builder = InlineKeyboardBuilder()
     buttons = [
         InlineKeyboardButton(text='Полный осмотр авто(GoogleDisk)',
-                             url='https://drive.google.com/file/d/1DNDq5sofqBOcti2Zve3OkWib1BKvE-9Z/view?usp=sharing'),
+                             url='https://drive.google.com/file/d/1DNDq5sofqBOcti2Zve3OkWib1BKvE-9Z/view?usp=sharing',
+                             callback_data='video1'),
         InlineKeyboardButton(text='Вернуться в меню',
                              callback_data='get_me_to_menu')
+    ]
+    kb_builder.row(*buttons, width=1)
+    return kb_builder.as_markup()
+
+
+def usr_vo_avto():
+    kb_builder = InlineKeyboardBuilder()
+    buttons = [
+        InlineKeyboardButton(text='Полный осмотр авто(GoogleDisk)',
+                             url='https://drive.google.com/file/d/1OySfIBwcXgIqOIN8WALYWYHRn_yFBorX/view?usp=sharing',
+                             callback_data='watch_the_video'),
+        InlineKeyboardButton(text='Вернуться в меню',
+                             callback_data='get_me_to_menu')
+    ]
+    kb_builder.row(*buttons, width=1)
+    return kb_builder.as_markup()
+
+
+def next_lesson_2():
+    kb_builder = InlineKeyboardBuilder()
+    buttons = [
+        InlineKeyboardButton(text='Следующий урок',
+                             callback_data='lesson_2')
+    ]
+    kb_builder.row(*buttons, width=1)
+    return kb_builder.as_markup()
+
+
+def i_did_watch_the_video():
+    kb_builder = InlineKeyboardBuilder()
+    buttons = [
+        InlineKeyboardButton(text='Да',
+                             callback_data='i_did_watch_the_video')
     ]
     kb_builder.row(*buttons, width=1)
     return kb_builder.as_markup()

@@ -13,7 +13,7 @@ async def main() -> None:
     # Инициализируем бот и диспетчер
 
     bot = Bot(token=token)
-    dp = Dispatcher()
+    dp = Dispatcher(storage=user_handlers.storage)
 
     dp.include_routers(user_handlers.router)
 

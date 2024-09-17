@@ -1,7 +1,11 @@
+import time
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ReplyKeyboardRemove
-from aiogram.filters import Command, CommandStart
+from aiogram.filters import Command, CommandStart, StateFilter
 from aiogram import Router, F, Bot
-
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+from CarKnowlegdeTest import carTest
 
 from keyboards import inline_keyboards, reply_keyboards
 from database_funcs import sqlite_funcs
@@ -11,9 +15,25 @@ admin_id1 = 332518143
 
 router = Router()
 
+storage = MemoryStorage()
 
 dict_to_check_progress = {}
 users = {}
+users_car_test = dict()
+
+
+# FSM (состояния)
+class QuizStates(StatesGroup):
+    Q1 = State()
+    Q2 = State()
+    Q3 = State()
+    Q4 = State()
+    Q5 = State()
+    Q6 = State()
+    Q7 = State()
+    Q8 = State()
+    Q9 = State()
+    Q10 = State()
 
 
 @router.message(CommandStart())
@@ -44,14 +64,24 @@ async def show_hello_slesarka(message: Message):
                          reply_markup=ReplyKeyboardRemove())
 
 
-
 @router.message(F.text == '6481373')
 async def send_osmotr_video(message: Message):
     await message.answer(
         text='Устройство автомобиля - это тот фундамент, который необходимо заложить перед изучением дальнейшего материала.\n\n'
              'В этом видео вы поймете из чего состоит автомобиль. На простых примерах будут показаны основные его части.\n\n'
              'Если нет доступа - обратитесь к Павлу Лизневу',
-        reply_markup=inline_keyboards.send_video_osmotr())
+        reply_markup=inline_keyboards.send_video_osmotr()
+    )
+
+
+@router.message(F.text == 'Общее устройство автомобиля')
+async def say_hello_ac(message: Message):
+    await message.answer(text='Добрый день! Направляю видео по устройству авто:\n\n',
+                         reply_markup=inline_keyboards.usr_vo_avto())
+    time.sleep(10)
+    await message.answer(
+        text='Посмотрели видео и готовы пройти тест?',
+        reply_markup=inline_keyboards.i_did_watch_the_video())
 
 
 @router.message(F.text == 'Система кондиционирования')
@@ -87,6 +117,133 @@ async def say_hello_electricity(message: Message):
                          reply_markup=ReplyKeyboardRemove())
 
 
+@router.callback_query(F.data == 'i_did_watch_the_video')
+async def start_quiz(callback: CallbackQuery, state: FSMContext):
+    if callback.from_user.id not in users_car_test:
+        users_car_test[callback.from_user.id] = {
+            'first_name': callback.from_user.first_name,
+            'username': callback.from_user.username,
+            'tries': 1,
+            'correct_answers': 0,
+            'incorrect_answers': 0
+        }
+    else:
+        users_car_test[callback.from_user.id]['tries'] += 1
+        users_car_test[callback.from_user.id]['correct_answers'] = 0
+        users_car_test[callback.from_user.id]['incorrect_answers'] = 0
+    await callback.message.answer(carTest.questions[0]["question"], reply_markup=reply_keyboards.get_keyboard(0))
+    await state.set_state(QuizStates.Q1)
+    await callback.answer()
+
+
+async def handle_answer(message: Message, state: FSMContext, question_index: int, next_state: State, bot: Bot):
+    user_answer = message.text
+
+    correct_answer = [a for a, correct in carTest.questions[question_index]["answers"] if correct][0]
+    print(user_answer)
+    if user_answer == correct_answer:
+        users_car_test[message.from_user.id]['correct_answers'] += 1
+        await message.answer("Правильный ответ!")
+    else:
+        users_car_test[message.from_user.id]['incorrect_answers'] += 1
+        await message.answer(f"Неправильный ответ.\n\nПравильный ответ: {correct_answer}")
+
+    # Переход к следующему вопросу или завершение
+    if question_index + 1 < len(carTest.questions):
+        await message.answer(carTest.questions[question_index + 1]["question"],
+                                      reply_markup=reply_keyboards.get_keyboard(question_index + 1))
+        await state.set_state(next_state)
+    else:
+        await bot.send_message(chat_id=admin_id1,
+                               text='Юзер {}\n@{}\nЗавершил тест\n\nПравильных ответов - {}\n\nНеверно - {}'.format(users_car_test[message.from_user.id]['first_name'],
+                                                                                                              users_car_test[message.from_user.id]['username'],
+                                                                                                              users_car_test[message.from_user.id]['correct_answers'],
+                                                                                                                 users_car_test[
+                                                                                                                     message.from_user.id][
+                                                                                                                     'incorrect_answers'] ))
+        if users_car_test[message.from_user.id]['correct_answers'] > 8:
+            await message.answer("Поздравляю вы хорошо усвоили материал!\n\n"
+                                          "Теперь можете переходить к следующему уроку.",
+                                 reply_markup=inline_keyboards.next_lesson_2())
+
+        else:
+            await message.answer('Некоторые ответы были неверные.\n'
+                                          'Для перехода к следующему уроку необходимо понять предыдущую тему и пройти тест еще раз.',
+                                          reply_markup=inline_keyboards.send_video_osmotr())
+        await state.clear()
+
+
+# Обработчики для каждого вопроса
+@router.message(QuizStates.Q1)
+async def question_1(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 0)
+    await handle_answer(message, state, question_index, QuizStates.Q2, bot)
+
+
+@router.message(QuizStates.Q2)
+async def question_2(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 1)
+    await handle_answer(message, state, question_index, QuizStates.Q3, bot)
+
+
+@router.message(QuizStates.Q3)
+async def question_3(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 2)
+    await handle_answer(message, state, question_index, QuizStates.Q4, bot)
+
+
+@router.message(QuizStates.Q4)
+async def question_4(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 3)
+    await handle_answer(message, state, question_index, QuizStates.Q5, bot)
+
+
+@router.message(QuizStates.Q5)
+async def question_5(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 4)
+    await handle_answer(message, state, question_index, QuizStates.Q6, bot)
+
+
+@router.message(QuizStates.Q6)
+async def question_6(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 5)
+    await handle_answer(message, state, question_index, QuizStates.Q7, bot)
+
+
+@router.message(QuizStates.Q7)
+async def question_7(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 6)
+    await handle_answer(message, state, question_index, QuizStates.Q8, bot)
+
+
+@router.message(QuizStates.Q8)
+async def question_8(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 7)
+    await handle_answer(message, state, question_index, QuizStates.Q9, bot)
+
+
+@router.message(QuizStates.Q9)
+async def question_9(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 8)
+    await handle_answer(message, state, question_index, QuizStates.Q10, bot)
+
+
+@router.message(QuizStates.Q10)
+async def question_10(message: Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+    question_index = data.get("question_index", 9)
+    await handle_answer(message, state, question_index, None, bot)
+
+
 @router.callback_query(F.data == 'get_me_to_ac_exam')
 async def lets_start_a_test(callback: CallbackQuery, bot: Bot):
     if sqlite_funcs.check_user_ac(callback.from_user.id):
@@ -106,9 +263,9 @@ async def lets_start_a_test(callback: CallbackQuery, bot: Bot):
         dict_to_check_progress[callback.from_user.id] = 1
         users[callback.from_user.id] = 0
         await callback.message.answer(text='Тест нужно пройти полностью, до конца, иначе результат не зачтется\n\n'
-                                   'Всего 20 вопросов и только ОДИН вариант ответа - верный\n\n'
-                                   'попытка одна, не спешите\n'
-                                   'Удачи!)'
+                                           'Всего 20 вопросов и только ОДИН вариант ответа - верный\n\n'
+                                           'попытка одна, не спешите\n'
+                                           'Удачи!)'
                                       )
         await callback.message.answer(text='''1. Какие основные функции выполняет автокондиционер в автомобиле?\n\n
 a) Охлаждение воздуха в салоне.\n
@@ -174,8 +331,8 @@ a) R22.\n
 b) R134a.\n
 c) R1234yf.\n
 d) R404a.''',
-                                  reply_markup=inline_keyboards.ac_4_answer(), chat_id=callback.from_user.id
-                                  )
+                               reply_markup=inline_keyboards.ac_4_answer(), chat_id=callback.from_user.id
+                               )
     else:
         await callback.message.answer(text='На вопрос можно ответить только ОДИН раз!')
 
@@ -215,7 +372,7 @@ a) Путем переключения работы кондиционера.\n
 b) Изменением направления потока воздуха.\n
 c) Регулировкой скорости вентилятора.\n
 d) Настройкой температуры.''',
-                                  reply_markup=inline_keyboards.ac_6_answer())
+                                      reply_markup=inline_keyboards.ac_6_answer())
     else:
         await callback.message.answer(text='На вопрос можно ответить только ОДИН раз!')
 
@@ -330,7 +487,7 @@ a) Трубки соединяются и нагреваются феном, п�
 b) Паяльник вставляется внутрь трубки для пайки, после чего происходит нагрев и соединение трубок.\n
 c) Трубки нагреваются горелкой, после чего на соединение наносится припой.\n
 d) Трубки соединяются и обжимаются специальным инструментом, не требующим нагрева.''',
-                                  reply_markup=inline_keyboards.ac_12_answer())
+                                      reply_markup=inline_keyboards.ac_12_answer())
     else:
         await callback.message.answer(text='На вопрос можно ответить только ОДИН раз!')
 
@@ -497,10 +654,12 @@ async def ac_20_note(callback: CallbackQuery, bot: Bot):
         if callback.data == 'ac-20-a':
             await bot.send_message(text='Верно!', chat_id=callback.from_user.id)
             users[callback.from_user.id] += 5
-        await callback.message.answer(text=f'Поздравляю! Вы прошли тест, результат - {users[callback.from_user.id]} баллов')
+        await callback.message.answer(
+            text=f'Поздравляю! Вы прошли тест, результат - {users[callback.from_user.id]} баллов')
         sqlite_funcs.change_opportunity_for_ac_test(callback.from_user.id)
-        await bot.send_message(text=f'{callback.from_user.first_name} - прошел тест, его результат:\n{users[callback.from_user.id]} баллов',
-                               chat_id=admin_id)
+        await bot.send_message(
+            text=f'{callback.from_user.first_name} - прошел тест, его результат:\n{users[callback.from_user.id]} баллов',
+            chat_id=admin_id)
         await bot.send_message(
             text=f'{callback.from_user.first_name} - прошел тест, его результат:\n{users[callback.from_user.id]} баллов',
             chat_id=admin_id1)
@@ -524,6 +683,5 @@ async def change_opportunity_ac(message: Message):
 
 @router.message(F.text)
 async def any_text(message: Message):
-    await message.answer(text='Я вас не понимаю...\n\nВывожу главное меню:', reply_markup=reply_keyboards.choose_course())
-
-
+    await message.answer(text='Я вас не понимаю...\n\nВывожу главное меню:',
+                         reply_markup=reply_keyboards.choose_course())
