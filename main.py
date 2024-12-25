@@ -3,6 +3,14 @@ import logging
 from aiogram import Bot, Dispatcher
 from config_data.config import token
 from handlers import user_handlers
+from database_funcs.sqlite_funcs import update_table_users, remove_duplicates
+from config_data import config
+
+
+# Выполняем обновление структуры таблицы перед запуском бота
+update_table_users()
+remove_duplicates()
+
 
 
 logging = logging.basicConfig(level=logging.INFO, filename='py_log.log', filemode='w')
