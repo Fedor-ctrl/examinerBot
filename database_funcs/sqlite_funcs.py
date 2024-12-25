@@ -13,7 +13,7 @@ import sqlite3
 # ''')
 
 
-path_to_db = r"C:\Users\PC\PycharmProjects\examinerBot\database_funcs\database.db"
+path_to_db = r"/home/examinerBot/database_funcs/database.db"
 
 
 #connection = sqlite3.connect(path_to_db)
