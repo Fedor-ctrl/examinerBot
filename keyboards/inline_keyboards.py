@@ -19,11 +19,6 @@ def send_predstavlenie_kompanii():
 def usr_vo_avto():
     kb_builder = InlineKeyboardBuilder()
     buttons = [
-        InlineKeyboardButton(text='Полный осмотр авто(GoogleDisk)',
-                             url='https://drive.google.com/file/d/1OySfIBwcXgIqOIN8WALYWYHRn_yFBorX/view?usp=sharing',
-                             callback_data='watch_the_video'),
-        InlineKeyboardButton(text='Вернуться в меню',
-                             callback_data='get_me_to_menu'),
         InlineKeyboardButton(text='Виды ДВС',
                              url='https://disk.yandex.ru/i/-ARy9zPYEb0ZZA'),
         InlineKeyboardButton(text='Впускная система',
@@ -45,7 +40,9 @@ def usr_vo_avto():
         InlineKeyboardButton(text='Устройство ДВС. Часть 2',
                              url='https://disk.yandex.ru/i/uaS6aoB65X5R9w'),
         InlineKeyboardButton(text='Устройство ДВС. Часть 3',
-                             url='https://disk.yandex.ru/i/XU519tNDXo0HcQ')
+                             url='https://disk.yandex.ru/i/XU519tNDXo0HcQ'),
+        InlineKeyboardButton(text='Вернуться в меню',
+                             callback_data='get_me_to_menu'),
     ]
     kb_builder.row(*buttons, width=1)
     return kb_builder.as_markup()

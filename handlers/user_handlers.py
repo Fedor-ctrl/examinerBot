@@ -1956,7 +1956,7 @@ d) Проверка баланса колеса.''',
 @router.callback_query(F.data == 'pr-7-b')
 @router.callback_query(F.data == 'pr-7-c')
 @router.callback_query(F.data == 'pr-7-d')
-async def ac_7_note(callback: CallbackQuery, bot: Bot):
+async def pr_7_note(callback: CallbackQuery, bot: Bot):
     correct_answers = {
         'pr-7-a': False,
         'pr-7-b': True,
@@ -2889,7 +2889,7 @@ async def pr_2_7_note(callback: CallbackQuery, bot: Bot):
                 text=f"К сожалению, вы не прошли тест. Ваш результат: {user_score}/7.\n"
                      f"Для перехода к следующему уроку необходимо набрать минимум 6 баллов.\n"
                      f"Попробуйте пройти тест ещё раз.",
-                reply_markup=inline_keyboards.pravki_zanovo_3()  # Клавиатура для повторного прохождения
+                reply_markup=inline_keyboards.pravki_zanovo_2()  # Клавиатура для повторного прохождения
             )
             sqlite_funcs.change_opportunity_for_pr_test_2(callback.from_user.id)
             await bot.send_message(
@@ -3105,6 +3105,7 @@ async def pr_3_5_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_3-6-c')
 @router.callback_query(F.data == 'pr_3-6-d')
 async def pr_3_6_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_3-6-a': False,
         'pr_3-6-b': True,
@@ -3135,6 +3136,7 @@ async def pr_3_6_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_3-7-c')
 @router.callback_query(F.data == 'pr_3-7-d')
 async def pr_3_7_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_3-7-a': False,
         'pr_3-7-b': False,
@@ -3165,6 +3167,7 @@ async def pr_3_7_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_3-8-c')
 @router.callback_query(F.data == 'pr_3-8-d')
 async def pr_3_8_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_3-8-a': False,
         'pr_3-8-b': False,
@@ -3196,6 +3199,7 @@ async def pr_3_8_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_3-9-c')
 @router.callback_query(F.data == 'pr_3-9-d')
 async def pr_3_9_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_3-9-a': False,
         'pr_3-9-b': False,
@@ -3226,6 +3230,7 @@ async def pr_3_9_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_3-10-c')
 @router.callback_query(F.data == 'pr_3-10-d')
 async def pr_3_10_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_3-10-a': False,
         'pr_3-10-b': False,
@@ -3258,6 +3263,7 @@ async def pr_3_10_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_3-11-c')
 @router.callback_query(F.data == 'pr_3-11-d')
 async def pr_3_11_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_3-11-a': False,
         'pr_3-11-b': True,
@@ -3288,6 +3294,7 @@ async def pr_3_11_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_3-12-c')
 @router.callback_query(F.data == 'pr_3-12-d')
 async def pr_3_12_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_3-12-a': False,
         'pr_3-12-b': True,
@@ -3318,6 +3325,7 @@ async def pr_3_12_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_3-13-c')
 @router.callback_query(F.data == 'pr_3-13-d')
 async def pr_3_13_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_3-13-a': False,
         'pr_3-13-b': True,
@@ -3356,7 +3364,7 @@ async def pr_3_13_note(callback: CallbackQuery, bot: Bot):
                 text=f"К сожалению, вы не прошли тест. Ваш результат: {user_score}/13.\n"
                      f"Для перехода к следующему уроку необходимо набрать минимум 12 баллов.\n"
                      f"Попробуйте пройти тест ещё раз.",
-                reply_markup=inline_keyboards.pravki_zanovo_4()  # Клавиатура для повторного прохождения
+                reply_markup=inline_keyboards.pravki_zanovo_3()  # Клавиатура для повторного прохождения
             )
             sqlite_funcs.change_opportunity_for_pr_test_3(callback.from_user.id)
             await bot.send_message(
@@ -3572,6 +3580,7 @@ async def pr_4_5_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_4-6-c')
 @router.callback_query(F.data == 'pr_4-6-d')
 async def pr_4_6_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_4-6-a': True,
         'pr_4-6-b': False,
@@ -3602,6 +3611,7 @@ async def pr_4_6_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_4-7-c')
 @router.callback_query(F.data == 'pr_4-7-d')
 async def pr_4_7_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_4-7-a': False,
         'pr_4-7-b': True,
@@ -3632,6 +3642,7 @@ async def pr_4_7_note(callback: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == 'pr_4-8-c')
 @router.callback_query(F.data == 'pr_4-8-d')
 async def pr_4_8_note(callback: CallbackQuery, bot: Bot):
+
     correct_answers = {
         'pr_4-8-a': False,
         'pr_4-8-b': False,
@@ -4918,9 +4929,9 @@ d) Станок.''',
 async def ob_18_note(callback: CallbackQuery, bot: Bot):
 
     correct_answers = {
-        'ob-18-a': True,
+        'ob-18-a': False,
         'ob-18-b': False,
-        'ob-18-c': False,
+        'ob-18-c': True,
         'ob-18-d': False,
     }
 
@@ -4939,7 +4950,7 @@ async def ob_18_note(callback: CallbackQuery, bot: Bot):
             sqlite_funcs.update_test_status(
                 tg_id=user_id,
                 test_column='ob_exam_pass',  # Убедитесь, что столбец существует
-                status=1 if user_score >= 18 else 0
+                status=1 if user_score >= 17 else 0
             )
             dict_to_check_progress[callback.from_user.id] = 19
 
@@ -5489,10 +5500,10 @@ d) Композитные материалы.''',
 async def st_17_note(callback: CallbackQuery, bot: Bot):
 
     correct_answers = {
-        'ob-17-a': False,
-        'ob-17-b': False,
-        'ob-17-c': True,
-        'ob-17-d': False,
+        'st-17-a': False,
+        'st-17-b': False,
+        'st-17-c': True,
+        'st-17-d': False,
     }
     if dict_to_check_progress[callback.from_user.id] == 17:
         dict_to_check_progress[callback.from_user.id] = 18
@@ -5651,8 +5662,8 @@ async def st_pr_1_note(callback: CallbackQuery, bot: Bot):
 
     correct_answers = {
         'st_pr-1-a': False,
-        'st_pr-1-b': False,
-        'st_pr-1-c': True,
+        'st_pr-1-b': True,
+        'st_pr-1-c': False,
         'st_pr-1-d': False,
     }
     if dict_to_check_progress[callback.from_user.id] == 1:
@@ -5739,8 +5750,8 @@ async def st_pr_4_note(callback: CallbackQuery, bot: Bot):
 
     correct_answers = {
         'st_pr-4-a': False,
-        'st_pr-4-b': False,
-        'st_pr-4-c': True,
+        'st_pr-4-b': True,
+        'st_pr-4-c': False,
         'st_pr-4-d': False,
     }
 
@@ -10996,7 +11007,7 @@ a) Для увеличения давления.\n
 b) Чтобы проверить герметичность.\n
 c) Чтобы она просела на место.\n
 d) Для удобства балансировки.''',
-                                      reply_markup=inline_keyboards.sn_8_answer())
+                                      reply_markup=inline_keyboards.sb_8_answer())
     else:
         await callback.message.answer(text='На вопрос можно ответить только ОДИН раз!')
 
