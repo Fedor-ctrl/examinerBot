@@ -16,8 +16,8 @@ def choose_course():
 
 def hello_slesarka():
     buttons = [
-        [KeyboardButton(text='Осмотр автомобиля')],
-        [KeyboardButton(text='Устройства ДВС')]
+        [KeyboardButton(text='Устройства ДВС')],
+        [KeyboardButton(text='Осмотр автомобиля')]
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, one_time_keyboard=True, resize_keyboard=True)
 
