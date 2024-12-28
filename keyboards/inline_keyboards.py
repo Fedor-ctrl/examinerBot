@@ -16,6 +16,15 @@ def send_predstavlenie_kompanii():
     kb_builder.row(*buttons, width=1)
     return kb_builder.as_markup()
 
+def osmotr_avto():
+    kb_builder = InlineKeyboardBuilder()
+    buttons = [
+        InlineKeyboardButton(text='Осмотр автомобиля',
+                             url='https://disk.yandex.ru/i/Ab8ZqatvIkOpGA')
+    ]
+    kb_builder.row(*buttons, width=1)
+    return kb_builder.as_markup()
+
 def usr_vo_avto():
     kb_builder = InlineKeyboardBuilder()
     buttons = [

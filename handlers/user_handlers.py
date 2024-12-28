@@ -86,8 +86,9 @@ async def send_predstavlenie_kompanii(message: Message):
 
 @router.message(F.text == 'Общее устройство автомобиля')
 async def say_hello_ac(message: Message):
-    await message.answer(text='Добрый день! Направляю видео по устройству авто:\n\n',
-                         reply_markup=inline_keyboards.usr_vo_avto())
+    await message.answer(text='Добрый день! Направляю видео по устройству авто. Этот курс еще не доступен\n\n'
+                              'возвращайтесь позже, скоро он появится тут для ознакомления\n\n',
+                         reply_markup=reply_keyboards.choose_course())
     time.sleep(10)
     await message.answer(
         text='Посмотрели видео и готовы пройти тест?',
@@ -118,9 +119,18 @@ async def say_hello_electricity(message: Message):
 
 @router.message(F.text == 'Слесарные работы')
 async def say_hello_slesarka(message: Message):
-    await message.answer(text='Приветствую на курсе по слесарным работам автомобиля!. Этот курс еще не доступен\n\n'
-                              'возвращайтесь позже, скоро он появится тут для ознакомления',
-                         reply_markup=reply_keyboards.choose_course())
+    await message.answer(text='Приветствую на курсе по слесарным работам автомобиля!. Выберете курс для ознакомления ниже:',
+                         reply_markup=reply_keyboards.hello_slesarka())
+
+@router.message(F.text == 'Осмотр автомобиля')
+async def send_block_po_shinke(message: Message):
+    await message.answer(text='Добро пожаловать на курс по осмотру автомобиля, ниже выберете урок:',
+                         reply_markup=inline_keyboards.osmotr_avto())
+
+@router.message(F.text == 'Устройства ДВС')
+async def send_block_po_shinke(message: Message):
+    await message.answer(text='Добро пожаловать на курс по устройству ДВС, ниже выберете урок:',
+                         reply_markup=inline_keyboards.usr_vo_avto())
 
 @router.message(F.text == 'Шиномонтаж')
 async def send_block_po_shinke(message: Message):

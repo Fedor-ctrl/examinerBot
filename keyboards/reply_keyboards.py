@@ -5,12 +5,19 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder
 def choose_course():
     buttons = [
         [KeyboardButton(text='Представление компании Good-Avto')],
-        [KeyboardButton(text='Общее устройство автомобиля')],
+        [KeyboardButton(text='Слесарные работы')],
         [KeyboardButton(text='Шиномонтаж')],
         [KeyboardButton(text='Система кондиционирования')],
         [KeyboardButton(text='Система питания')],
-        [KeyboardButton(text='Слесарные работы')],
+        [KeyboardButton(text='Общее устройство автомобиля')],
         [KeyboardButton(text='Электрика авто')]
+    ]
+    return ReplyKeyboardMarkup(keyboard=buttons, one_time_keyboard=True, resize_keyboard=True)
+
+def hello_slesarka():
+    buttons = [
+        [KeyboardButton(text='Осмотр автомобиля')],
+        [KeyboardButton(text='Устройства ДВС')]
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, one_time_keyboard=True, resize_keyboard=True)
 
