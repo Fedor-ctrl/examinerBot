@@ -8,7 +8,6 @@ def choose_course():
         [KeyboardButton(text='Слесарные работы')],
         [KeyboardButton(text='Шиномонтаж')],
         [KeyboardButton(text='Система кондиционирования')],
-        [KeyboardButton(text='Топливная система')],
         [KeyboardButton(text='Общее устройство автомобиля')],
         [KeyboardButton(text='Электрика авто')]
     ]
@@ -17,7 +16,8 @@ def choose_course():
 def hello_slesarka():
     buttons = [
         [KeyboardButton(text='Осмотр автомобиля')],
-        [KeyboardButton(text='Устройства ДВС')]
+        [KeyboardButton(text='Устройства ДВС')],
+        [KeyboardButton(text='Топливная система')]
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, one_time_keyboard=True, resize_keyboard=True)
 
