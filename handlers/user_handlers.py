@@ -73,9 +73,9 @@ async def treningi(message: Message):
     await message.answer(text='Добро пожаловать на уроки по тренингу!\n\n',
                          reply_markup=inline_keyboards.treningi())
 
-@router.message(F.text == 'Система питания')
+@router.message(F.text == 'Топливная система')
 async def treningi(message: Message):
-    await message.answer(text='Добро пожаловать на курс по системам питания!\n\n',
+    await message.answer(text='Добро пожаловать на курс по топливной системе!\n\n',
                          reply_markup=inline_keyboards.sysvpr())
 
 @router.message(F.text == 'Представление компании Good-Avto')

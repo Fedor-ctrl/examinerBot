@@ -8,7 +8,7 @@ def choose_course():
         [KeyboardButton(text='Слесарные работы')],
         [KeyboardButton(text='Шиномонтаж')],
         [KeyboardButton(text='Система кондиционирования')],
-        [KeyboardButton(text='Система питания')],
+        [KeyboardButton(text='Топливная система')],
         [KeyboardButton(text='Общее устройство автомобиля')],
         [KeyboardButton(text='Электрика авто')]
     ]
