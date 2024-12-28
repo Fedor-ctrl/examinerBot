@@ -7,8 +7,8 @@ def choose_course():
         [KeyboardButton(text='Представление компании Good-Avto')],
         [KeyboardButton(text='Слесарные работы')],
         [KeyboardButton(text='Шиномонтаж')],
-        [KeyboardButton(text='Топливная система')],
         [KeyboardButton(text='Система кондиционирования')],
+        [KeyboardButton(text='Топливная система')],
         [KeyboardButton(text='Общее устройство автомобиля')],
         [KeyboardButton(text='Электрика авто')]
     ]
