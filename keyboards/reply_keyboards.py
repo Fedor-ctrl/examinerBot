@@ -9,7 +9,6 @@ def choose_course():
         [KeyboardButton(text='Слесарные работы')],
         [KeyboardButton(text='Шиномонтаж')],
         [KeyboardButton(text='Система кондиционирования')],
-        [KeyboardButton(text='Общее устройство автомобиля')],
         [KeyboardButton(text='Электрика авто')]
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, one_time_keyboard=True, resize_keyboard=True)
