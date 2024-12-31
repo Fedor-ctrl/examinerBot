@@ -5,6 +5,7 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder
 def choose_course():
     buttons = [
         [KeyboardButton(text='Представление компании Good-Avto')],
+        [KeyboardButton(text='Общее устройство автомобиля')],
         [KeyboardButton(text='Слесарные работы')],
         [KeyboardButton(text='Шиномонтаж')],
         [KeyboardButton(text='Система кондиционирования')],

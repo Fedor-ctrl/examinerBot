@@ -47,6 +47,11 @@ async def oborudovanie(message: Message):
     await message.answer(text='Добро пожаловать на курс по ремонту и шиномонтажу!\n\n',
                          reply_markup=inline_keyboards.oborudovanie())
 
+@router.message(F.text == 'Общее устройство автомобиля')
+async def oborudovanie(message: Message):
+    await message.answer(text='Добро пожаловать на курс по ремонту и шиномонтажу!\n\n',
+                         reply_markup=inline_keyboards.ustroystvo_avto())
+
 @router.message(F.text == 'Ремонт и шиномонтаж')
 async def oborudovanie(message: Message):
     await message.answer(text='Добро пожаловать на курс по ремонту и шиномонтажу!\n\n',
