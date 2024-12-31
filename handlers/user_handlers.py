@@ -47,6 +47,11 @@ async def oborudovanie(message: Message):
     await message.answer(text='Добро пожаловать на курс по ремонту и шиномонтажу!\n\n',
                          reply_markup=inline_keyboards.oborudovanie())
 
+@router.message(F.text == 'Ремонт и шиномонтаж')
+async def oborudovanie(message: Message):
+    await message.answer(text='Добро пожаловать на курс по ремонту и шиномонтажу!\n\n',
+                         reply_markup=inline_keyboards.remont_i_shinka())
+
 @router.message(F.text == 'Госты и Нормативы')
 async def send_gosts_and_normatives(message: Message):
     try:

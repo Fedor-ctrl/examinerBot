@@ -34,7 +34,8 @@ def kursi_po_shinke():
 
 def kursi_po_kolesam():
     buttons = [
-        [KeyboardButton(text='Уроки по дискам')]
+        [KeyboardButton(text='Уроки по дискам')],
+        [KeyboardButton(text='Уроки по шинам')]
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, one_time_keyboard=True, resize_keyboard=True)
 
