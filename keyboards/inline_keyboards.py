@@ -347,7 +347,7 @@ def diski():
         InlineKeyboardButton(text='В чем отличие литья от ковки', callback_data="litorkovka"),
         InlineKeyboardButton(text='Все параметры дисков', callback_data="parametrdisk"),
         InlineKeyboardButton(text='Кольца для литых дисков', callback_data="kolcadldiskov"),
-        InlineKeyboardButton(text='Шинка диск', callback_data="shinkadisk")
+        InlineKeyboardButton(text='Виды дисков', callback_data="shinkadisk")
     ]
     kb_builder.row(*buttons, width=1)
     return kb_builder.as_markup()
