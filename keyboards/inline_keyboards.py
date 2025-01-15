@@ -25,6 +25,15 @@ def osmotr_avto():
     kb_builder.row(*buttons, width=1)
     return kb_builder.as_markup()
 
+def ustroystvo_avto():
+    kb_builder = InlineKeyboardBuilder()
+    buttons = [
+        InlineKeyboardButton(text='Общее устройство автомобиля',
+                             url='https://disk.yandex.ru/i/lPXoKCTEcMxePA')
+    ]
+    kb_builder.row(*buttons, width=1)
+    return kb_builder.as_markup()
+
 def usr_vo_avto():
     kb_builder = InlineKeyboardBuilder()
     buttons = [
@@ -38,8 +47,6 @@ def usr_vo_avto():
                              url='https://disk.yandex.ru/i/vk4lbJeyyC2CIw'),
         InlineKeyboardButton(text='КШМ',
                              url='https://disk.yandex.ru/i/fdlqND6mRUGSyA'),
-        InlineKeyboardButton(text='Общее устройство автомобиля',
-                             url='https://disk.yandex.ru/i/lPXoKCTEcMxePA'),
         InlineKeyboardButton(text='Рабочий цикл четырёхтактного бензинового двигателя',
                              url='https://disk.yandex.ru/i/urW26X108113iA'),
         InlineKeyboardButton(text='Типы и виды ГРМ',
@@ -225,7 +232,6 @@ def shinshik():
         InlineKeyboardButton(text='Левые и правые шины', callback_data="leftandright"),
         InlineKeyboardButton(text='Маркировка шин. Вариант 1', callback_data="markirovkadiskov"),
         InlineKeyboardButton(text='Маркировка шин. Вариант 2', callback_data="markirovkashin"),
-        InlineKeyboardButton(text='Шинка диск', callback_data="shinkadisk"),
         InlineKeyboardButton(text='Шины STUDDED или STUDABLE', callback_data="studorstudd")
     ]
     kb_builder.row(*buttons, width=1)
@@ -340,7 +346,8 @@ def diski():
     buttons = [
         InlineKeyboardButton(text='В чем отличие литья от ковки', callback_data="litorkovka"),
         InlineKeyboardButton(text='Все параметры дисков', callback_data="parametrdisk"),
-        InlineKeyboardButton(text='Кольца для литых дисков', callback_data="kolcadldiskov")
+        InlineKeyboardButton(text='Кольца для литых дисков', callback_data="kolcadldiskov"),
+        InlineKeyboardButton(text='Виды дисков', callback_data="shinkadisk")
     ]
     kb_builder.row(*buttons, width=1)
     return kb_builder.as_markup()
