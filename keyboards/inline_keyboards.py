@@ -553,8 +553,6 @@ def graphics_to_continue():
                              url='https://disk.yandex.ru/i/chpnChsLRaWk-A'),
         InlineKeyboardButton(text='Перейти к тестированию!',
                              callback_data='get_me_to_ac_exam'),
-        InlineKeyboardButton(text='Климатическая система в современном автомобиле. Книга',
-                             url='https://disk.yandex.ru/i/chpnChsLRaWk-A'),
     ]
     kb_builder.row(*buttons, width=1)
     return kb_builder.as_markup()
