@@ -549,7 +549,7 @@ def graphics_to_continue():
         InlineKeyboardButton(text='Как правильно вставлять ерш в шланг',
                              callback_data='ac_fit_repair7',
                              url='https://drive.google.com/file/d/1Ni685gYyO04axXrc79YCvO_hZYLfTgSz/view?usp=sharing'),
-        InlineKeyboardButton(text='Климатическая система в современном автомобиле. Книга',
+        InlineKeyboardButton(text='Книга.Климатическая система в современном автомобиле',
                              url='https://disk.yandex.ru/i/chpnChsLRaWk-A'),
         InlineKeyboardButton(text='Перейти к тестированию!',
                              callback_data='get_me_to_ac_exam'),
